@@ -172,14 +172,18 @@ if(NOT PNG_LIBRARIES)
   set(PNG_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/libpng")
 endif()
 
+if(NOT USE_SHARED_FREETYPE)
 set(FREETYPE_FOUND ON)
 find_library(FREETYPE_LIBRARY freetype2 PATH "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
 set(FREETYPE_LIBRARIES ${FREETYPE_LIBRARY})
 set(FREETYPE_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/freetype/include")
+endif()
 
+if(NOT USE_SHARED_HARFBUZZ)
 find_library(HARFBUZZ_LIBRARY harfbuzz PATH "${SKIA_LIBRARY_DIR}" NO_DEFAULT_PATH)
 set(HARFBUZZ_LIBRARIES ${HARFBUZZ_LIBRARY})
 set(HARFBUZZ_INCLUDE_DIRS "${SKIA_DIR}/third_party/externals/harfbuzz/src")
+endif()
 
 set(SKIA_LIBRARIES
   ${SKIA_LIBRARY}
